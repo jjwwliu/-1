@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蜕变与远航 - 校区运营实习期工作总结与汇报</title>
+    <style>
+        :root {
+            --primary-color: #0b5b3a;
+            --primary-light: #168554;
+            --accent-color: #2ec4b6;
+            --dark-color: #222222;
+            --light-bg: #f8f9fa;
+            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        /* 启用全页面平滑滚动效果 */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans CJK SC", sans-serif;
+            color: var(--dark-color);
+            background-color: var(--light-bg);
+            line-height: 1.6;
+        }
+
+        /* Header / Hero Section */
+        header {
+            background: linear-gradient(135deg, #063c25 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, var(--accent-color), var(--primary-light));
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        header h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        header .subtitle-en {
+            font-size: 1rem;
+            opacity: 0.6;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Section Global Styles */
+        section {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--card-shadow);
+            /* 增加滚动偏移量，防止跳转后内容贴顶太死 */
+            scroll-margin-top: 30px; 
+        }
+
+        .section-tag {
+            display: inline-block;
+            color: var(--primary-light);
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        /* Agenda Section (Part 01-04) */
+        .agenda-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        /* 将目录卡片包装为可点击的链接式样 */
+        .agenda-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .agenda-card {
+            background: var(--light-bg);
+            border-left: 4px solid var(--primary-light);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            transition: var(--transition);
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .agenda-link:hover .agenda-card {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-left-color: var(--accent-color);
+            background-color: #f1f5f3;
+        }
+
+        .agenda-num {
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: var(--primary-light);
+        }
+
+        .agenda-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 5px 0 10px 0;
+            color: var(--primary-color);
+        }
+
+        .agenda-desc {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        /* Chapter 1: Grid Layout */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 25px;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary-light);
+            box-shadow: var(--card-shadow);
+        }
+
+        .card-icon-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .card-icon-title::before {
+            content: '■';
+            color: var(--accent-color);
+            font-size: 1rem;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #555;
+            text-align: justify;
+        }
+
+        /* Chapter 2: Growths */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+        }
+
+        .growth-box h4 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+        }
+
+        .growth-item {
+            margin-bottom: 20px;
+        }
+
+        .growth-label {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .growth-label::before {
+            content: '✓';
+            color: var(--primary-light);
+            font-weight: bold;
+        }
+
+        .growth-text {
+            font-size: 0.95rem;
+            color: #555;
+            padding-left: 20px;
+        }
+
+        /* Mind & Skill block */
+        .split-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            background: #fdfdfd;
+            border: 1px dashed #ddd;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .split-block { grid-template-columns: 1fr; }
+        }
+
+        .split-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .split-desc {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        /* Chapter 3: Table */
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 14px 16px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        th:first-child { border-top-left-radius: 6px; }
+        th:last-child { border-top-right-radius: 6px; }
+
+        td {
+            padding: 16px;
+            border-bottom: 1px solid #eee;
+            vertical-align: top;
+            color: #444;
+        }
+
+        tr:hover td {
+            background-color: #fcfcfc;
+        }
+
+        .td-highlight {
+            font-weight: bold;
+            color: #c0392b;
+            margin-bottom: 6px;
+        }
+
+        .td-action {
+            font-weight: bold;
+            color: var(--primary-light);
+            margin-bottom: 6px;
+        }
+
+        /* Chapter 4: Timeline */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 40px auto 0 auto;
+            padding: 20px 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #e0e0e0;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::after { left: 31px; }
+        }
+
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .timeline-container::before { left: 60px; }
+        }
+
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            right: -8px;
+            background-color: white;
+            border: 4px solid var(--accent-color);
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        @media (max-width: 768px) {
+            .timeline-container::after {
+                left: 21px;
+                right: auto;
+            }
+        }
+
+        .timeline-container:hover::after {
+            background-color: var(--primary-color);
+            scale: 1.2;
+        }
+
+        .left { left: 0; }
+        .right { left: 50%; }
+
+        .right::after { left: -8px; }
+
+        @media (max-width: 768px) {
+            .right { left: 0; }
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: var(--light-bg);
+            position: relative;
+            border-radius: 8px;
+            border-top: 3px solid var(--primary-light);
+        }
+
+        .time-tag {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3px 10px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .time-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--dark-color);
+            margin-bottom: 8px;
+        }
+
+        .time-desc {
+            font-size: 0.9rem;
+            color: #555;
+            text-align: justify;
+        }
+
+        /* Work Creed Blockquote */
+        .creed-section {
+            background: linear-gradient(135deg, #fdfbf7 0%, #f5efe6 100%);
+            border: 1px solid #eadecc;
+            text-align: center;
+            padding: 50px 40px;
+        }
+
+        blockquote {
+            font-size: 1.3rem;
+            color: #4a3728;
+            font-weight: 500;
+            position: relative;
+            display: inline-block;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        blockquote::before {
+            content: '“';
+            font-size: 4rem;
+            color: rgba(11, 91, 58, 0.1);
+            position: absolute;
+            top: -40px;
+            left: -30px;
+        }
+
+        blockquote::after {
+            content: '”';
+            font-size: 4rem;
+            color: rgba(11, 91, 58, 0.1);
+            position: absolute;
+            bottom: -70px;
+            right: -30px;
+        }
+
+        .creed-author {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #8a7663;
+            letter-spacing: 1px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+            background-color: white;
+            border-top: 1px solid #eee;
+        }
+
+        footer h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            font-size: 1rem;
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        footer .thank-en {
+            font-size: 0.9rem;
+            color: #bbb;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>蜕变与远航</h1>
+        <h2>校区运营实习期工作总结与汇报演示文稿</h2>
+        <div class="subtitle-en">CAMPUS OPERATIONS INTERNSHIP PRESENTATION</div>
+    </header>
+
+    <div class="container">
+
+        <section id="agenda">
+            <div class="section-tag">Agenda</div>
+            <h3 class="section-title">汇报目录</h3>
+            <div class="agenda-grid">
+                <a href="#chapter1" class="agenda-link">
+                    <div class="agenda-card">
+                        <div class="agenda-num">PART 01</div>
+                        <div class="agenda-name">工作内容</div>
+                        <div class="agenda-desc">校区日常运维、精细沟通和测评，立足三大阵地。</div>
+                    </div>
+                </a>
+                <a href="#chapter2" class="agenda-link">
+                    <div class="agenda-card">
+                        <div class="agenda-num">PART 02</div>
+                        <div class="agenda-name">工作成长与收获</div>
+                        <div class="agenda-desc">专业实操技能跃迁，成功开启向职业人的成熟转型。</div>
+                    </div>
+                </a>
+                <a href="#chapter3" class="agenda-link">
+                    <div class="agenda-card">
+                        <div class="agenda-num">PART 03</div>
+                        <div class="agenda-name">工作不足与反思</div>
+                        <div class="agenda-desc">精准诊疗三大痛点，以深度反思为武器寻找优化出路。</div>
+                    </div>
+                </a>
+                <a href="#chapter4" class="agenda-link">
+                    <div class="agenda-card">
+                        <div class="agenda-num">PART 04</div>
+                        <div class="agenda-name">近半年发展规划</div>
+                        <div class="agenda-desc">制定五阶段发展节点，稳步向高段位全能骨干迈进。</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section id="chapter1">
+            <div class="section-tag">Chapter One</div>
+            <h3 class="section-title">第一章：工作内容</h3>
+            <div class="section-subtitle">“真抓实干，立足日常打磨业务基础”</div>
+            <h4 style="color: var(--primary-light); margin-bottom: 20px; font-weight: 600;">| 立足三大阵地，保障校区高效运转</h4>
+            
+            <div class="grid-3">
+                <div class="feature-card">
+                    <div class="card-icon-title">校区日常管理</div>
+                    <p>全面负责校区现场的日常运维、教学秩序维护和环境管理。确保为学员和家长提供一个安全、整洁、高标准且运转流畅的学习环境。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="card-icon-title">社群与电话沟通</div>
+                    <p>日常主要负责拨打测试确认电话、学员出勤提醒电话，以及测试后的回访反馈电话。通过精细化、常态化的沟通，架起家校之间的即时信息桥梁。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="card-icon-title">组织新生测评</div>
+                    <p>落地组织面向新学员的专业入学测评。严格掌控测评标准与流程，输出学情诊断，为后续针对性地进行推荐班级报名、协助入班做好充分准备。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="chapter2">
+            <div class="section-tag">Chapter Two</div>
+            <h3 class="section-title">第二章：工作成长与收获</h3>
+            <div class="section-subtitle">“潜心蓄力，多维蜕变见证自我重塑”</div>
+            <h4 style="color: var(--primary-light); margin-bottom: 20px; font-weight: 600;">| 专业实操，在历练中实现全面业务成长</h4>
+
+            <div class="grid-2">
+                <div class="growth-box">
+                    <div class="growth-item">
+                        <div class="growth-label">深谙校区运行</div>
+                        <div class="growth-text">加深了对校区各部门协作链路的整体认知，对体系内课程结构、信息系统实现高度熟练掌握。</div>
+                    </div>
+                    <div class="growth-item">
+                        <div class="growth-label">咨询应对自如</div>
+                        <div class="growth-text">面对家长的核心诉求及各类突发咨询时，能够快速响应，并能够从专业、妥帖的视角协助圆满解决。</div>
+                    </div>
+                </div>
+                <div class="growth-box">
+                    <div class="growth-item">
+                        <div class="growth-label">沟通能力跃迁</div>
+                        <div class="growth-text">拨打电话从早期的局促与紧张，华丽蜕变到如今自如沟通、随机应变，并能精准捕捉家长痛点。</div>
+                    </div>
+                    <div class="growth-item">
+                        <div class="growth-label">测评彻底独立</div>
+                        <div class="growth-text">组织测评从最初的需要在老员工或专人指导下开展，转变为如今可独自承接、闭环掌控全部流程。</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="split-block">
+                <div>
+                    <div class="split-title"><span>|</span> 心态：破茧成蝶，华丽蜕变</div>
+                    <div class="split-desc">成功打破了既往的学生思维，树立了清晰的“职业人”主体意识。学会以结果为导向看待自身工作，能以高标准的主动责任感和抗压协作姿态融入职场生活。</div>
+                    <div class="split-desc">面对复杂纷繁的业务情境，逐渐学会以成熟的职业心态去包容困难，积极调配资源突破局限，从而更好地适应职场的高能节奏。</div>
+                </div>
+                <div>
+                    <div class="split-title"><span>|</span> 技能：高效规划，统筹精进</div>
+                    <div class="split-desc">在面对校区繁琐且交错的并发工作时，摸索出一套高效的时间与精力管理方案。拒绝盲目应付，学会厘清事情的主次先后、妥善有序地处理和推进。</div>
+                    <div class="split-desc">显著拉升了个人的信息整合能力以及综合管理素养，从而为成为全能型、复合型的校区运营人才筑牢了底层支撑。</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="chapter3">
+            <div class="section-tag">Chapter Three</div>
+            <h3 class="section-title">第三章：工作不足和反思</h3>
+            <div class="section-subtitle">“行有不得，在自省中看清持续优化的方向”</div>
+            <h4 style="color: var(--primary-light); margin-bottom: 20px; font-weight: 600;">| 精准自诊，通过直面痛点探寻破局之路</h4>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>关键不足诊断</th>
+                            <th>深层根源剖析</th>
+                            <th>下一步行动反思</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="td-highlight">首问首答滞后</div>
+                                部分咨询业务无法第一时间反应，需查阅资料。
+                            </td>
+                            <td>由于日常接待家长的经验相对有限，缺少高频实战的直观冲击，对非常规边角知识点的条件反射尚未形成。</td>
+                            <td>
+                                <div class="td-action">多频操练</div>
+                                强迫自己多看业务资料；抓住一切机会实操接待。
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="td-highlight">精细文件难寻</div>
+                                群聊功能虽熟，但找细节性文件耗时长、定位不快。
+                            </td>
+                            <td>虽然掌握了大路径，但缺少对文档归纳、备份、多重归档位置的深层梳理与随时演练。</td>
+                            <td>
+                                <div class="td-action">熟记位置</div>
+                                空闲时间挨个翻阅熟悉各个群和文件夹，整理快捷索引。
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="td-highlight">家长会需依稿</div>
+                                现在仍不能流利脱稿宣讲家长会。
+                            </td>
+                            <td>对演讲底层逻辑的内化程度不足，对台词内容尚未形成肌肉记忆与自如演化的底层底气。</td>
+                            <td>
+                                <div class="td-action">反复背诵</div>
+                                反复背诵逐字稿并自我模拟路演，锻炼即兴演讲感。
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="chapter4">
+            <div class="section-tag">Chapter Four</div>
+            <h3 class="section-title">第四章：近半年发展规划</h3>
+            <div class="section-subtitle">“笃行致远，绘就职业升级路线图”</div>
+            <h4 style="color: var(--primary-light); text-align: center; font-weight: 600;">| 近半年发展路线：阶段突围与角色蜕变</h4>
+
+            <div class="timeline">
+                <div class="timeline-container left">
+                    <div class="timeline-content">
+                        <div class="time-tag">LATE MAY</div>
+                        <div class="time-title">五月底</div>
+                        <div class="time-desc">克服心理难关。开始登台尝试主持召开第一场家长会，迈出公众表达的勇敢一步。</div>
+                    </div>
+                </div>
+                <div class="timeline-container right">
+                    <div class="timeline-content">
+                        <div class="time-tag">JUNE</div>
+                        <div class="time-title">六月开始</div>
+                        <div class="time-desc">正式全面上手独立值班，除了涉及极特殊核心问题外，实现日常运营全部自主闭环解决。</div>
+                    </div>
+                </div>
+                <div class="timeline-container left">
+                    <div class="timeline-content">
+                        <div class="time-tag">MID JUNE</div>
+                        <div class="time-title">六月中旬前</div>
+                        <div class="time-desc">对前期的三大痛点（首问回复、文件寻找、家长会熟练度）集中突围并全部改正。</div>
+                    </div>
+                </div>
+                <div class="timeline-container right">
+                    <div class="timeline-content">
+                        <div class="time-tag">JULY</div>
+                        <div class="time-title">七月份</div>
+                        <div class="time-desc">业务技能闭环，全方位独立掌握全部服务与沟通细节。成为合格的校区运营者。</div>
+                    </div>
+                </div>
+                <div class="timeline-container left">
+                    <div class="timeline-content">
+                        <div class="time-tag">POST-SUMMER</div>
+                        <div class="time-title">暑假结束后</div>
+                        <div class="time-desc">全面熟练各类核心及周边业务。能够随时跨部门提供弹性支援。进阶多面运营骨干。</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="creed-section">
+            <h4 style="color: var(--primary-color); margin-bottom: 20px; font-weight: bold; font-size: 1.2rem;">| 我的工作信条</h4>
+            <blockquote>
+                行而不辍，履践致远。在校区的每一刻，都是用心的沉淀；向前的每一步，都将是对未来的奔赴。
+            </blockquote>
+            <div class="creed-author">— 2026年运营工作自勉</div>
+        </section>
+
+    </div>
+
+    <footer>
+        <h3>汇报完毕</h3>
+        <p>感谢校区各位老师在实习期间对我的包容、鼓励与悉心教导</p>
+        <div class="thank-en">Thank you for Listening and Guidance</div>
+    </footer>
+
+</body>
+</html>
